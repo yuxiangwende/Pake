@@ -9,37 +9,37 @@ on:
       title:
         description: 'App Title'
         required: true
-        default: 'Twitter'
+        default: 'Logseq DB'
       name_zh:
         description: 'App Name in Chinese'
         required: true
-        default: '推特'
+        default: 'Logseq DB'
       url:
         description: 'App URL'
         required: true
-        default: 'https://twitter.com/'
+        default: 'https://logseq-db-demo.pages.dev/'
   workflow_call:
     inputs:
       name:
         description: 'App Name'
         type: string
         required: true
-        default: 'twitter'
+        default: 'logseq-db'
       title:
         description: 'App Title'
         required: true
         type: string
-        default: 'Twitter'
+        default: 'Logseq DB'
       name_zh:
         description: 'App Name in Chinese'
         required: true
         type: string
-        default: '推特'
+        default: 'Logseq DB'
       url:
         description: 'App URL'
         required: true
         type: string
-        default: 'https://twitter.com/'
+        default: 'https://logseq-db-demo.pages.dev/'
 
 jobs:
   build_single_app:
@@ -47,20 +47,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        build: [linux, macos, windows]
+        build: [windows]
         include:
-          - build: linux
-            os: ubuntu-latest
-            rust: stable
-            target: x86_64-unknown-linux-musl
           - build: windows
             os: windows-latest
             rust: stable-x86_64-msvc
             target: x86_64-pc-windows-msvc
-          - build: macos
-            os: macos-latest
-            rust: stable
-            target: x86_64-apple-darwin
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
